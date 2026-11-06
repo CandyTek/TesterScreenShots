@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ed_bg">#FF000000</color>
+    <color name="ed_bar">#FF151515</color>
+    <color name="ed_text">#FFFFFFFF</color>
+    <color name="ed_accent">#FF4FC3F7</color>
+    <color name="ed_divider">#33FFFFFF</color>
+    <color name="ed_tool_selected">#33FFFFFF</color>
+    <color name="ed_hint_bg">#B3000000</color>
+    <!-- palette -->
+    <color name="ed_red">#FFF44336</color>
+    <color name="ed_yellow">#FFFFEB3B</color>
+    <color name="ed_green">#FF4CAF50</color>
+    <color name="ed_blue">#FF2196F3</color>
+    <color name="ed_white">#FFFFFFFF</color>
+    <color name="ed_black">#FF000000</color>
+</resources>

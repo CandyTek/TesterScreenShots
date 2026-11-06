@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ed_back">返回</string>
+    <string name="ed_share">分享</string>
+    <string name="ed_delete">删除</string>
+    <string name="ed_edit">编辑</string>
+    <string name="ed_cancel">取消编辑</string>
+    <string name="ed_undo">撤销</string>
+    <string name="ed_redo">重做</string>
+    <string name="ed_save">保存</string>
+    <string name="ed_editing_title">编辑</string>
+
+    <string name="ed_tool_pen">画笔</string>
+    <string name="ed_tool_line">直线</string>
+    <string name="ed_tool_arrow">箭头</string>
+    <string name="ed_tool_rect">矩形</string>
+    <string name="ed_tool_oval">椭圆</string>
+    <string name="ed_tool_text">文字</string>
+    <string name="ed_tool_mosaic">马赛克</string>
+    <string name="ed_tool_crop">裁剪</string>
+    <string name="ed_width_thin">细</string>
+    <string name="ed_width_medium">中</string>
+    <string name="ed_width_thick">粗</string>
+    <string name="ed_color_red">红色</string>
+    <string name="ed_color_yellow">黄色</string>
+    <string name="ed_color_green">绿色</string>
+    <string name="ed_color_blue">蓝色</string>
+    <string name="ed_color_white">白色</string>
+    <string name="ed_color_black">黑色</string>
+
+    <string name="ed_crop_apply">应用裁剪</string>
+    <string name="ed_crop_reset">重置</string>
+    <string name="ed_crop_nothing">请先拖动裁剪框</string>
+
+    <string name="ed_hint_text">点击图片放置文字</string>
+    <string name="ed_hint_text_tap">点击图片添加文字</string>
+    <string name="ed_hint_mosaic">拖动框选需要打码的区域</string>
+    <string name="ed_hint_crop">拖动边框调整，然后点击“应用裁剪”</string>
+
+    <string name="ed_text_title">添加文字</string>
+    <string name="ed_text_hint">文字</string>
+    <string name="ed_ok">确定</string>
+    <string name="ed_dialog_cancel">取消</string>
+
+    <string name="ed_delete_title">删除截图？</string>
+    <string name="ed_delete_message">%1$s 及其附带的信息文件将被永久删除。</string>
+    <string name="ed_delete_failed">无法删除文件</string>
+
+    <string name="ed_discard_title">放弃修改？</string>
+    <string name="ed_discard_message">所有标注都将丢失。</string>
+    <string name="ed_discard">放弃</string>
+    <string name="ed_keep_editing">继续编辑</string>
+
+    <string name="ed_save_title">保存编辑后的图片</string>
+    <string name="ed_save_overwrite">覆盖原图</string>
+    <string name="ed_save_copy">另存为副本</string>
+    <string name="ed_save_copy_png">另存为副本（PNG）</string>
+    <string name="ed_saving">正在保存…</string>
+    <string name="ed_saved">已保存：%1$s</string>
+    <string name="ed_save_failed">保存失败：%1$s</string>
+    <string name="ed_no_changes">没有修改</string>
+
+    <string name="ed_load_failed">无法打开图片</string>
+    <string name="ed_downscaled">图片过大：将以较低分辨率显示和保存</string>
+    <string name="ed_out_of_memory">内存不足，无法完成此操作</string>
+    <string name="ed_share_title">分享截图</string>
+    <string name="ed_share_failed">无法分享图片</string>
+</resources>

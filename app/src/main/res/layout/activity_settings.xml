@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/primary"
+        android:elevation="4dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/back"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="4dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/back"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/settings"
+            android:textColor="#FFFFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="32dp">
+
+            <!-- ============ Capture ============ -->
+            <TextView style="@style/SettingsHeader" android:text="@string/set_capture" />
+
+            <RadioGroup
+                android:id="@+id/methodGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton android:id="@+id/rbAuto" style="@style/SettingsRadio" android:text="@string/method_auto" />
+                <RadioButton android:id="@+id/rbRoot" style="@style/SettingsRadio" android:text="@string/method_root" />
+                <RadioButton android:id="@+id/rbAdb" style="@style/SettingsRadio" android:text="@string/method_adb" />
+                <RadioButton android:id="@+id/rbAccessibility" style="@style/SettingsRadio" android:text="@string/method_accessibility" />
+                <RadioButton android:id="@+id/rbProjection" style="@style/SettingsRadio" android:text="@string/method_projection" />
+            </RadioGroup>
+
+            <TextView style="@style/SettingsHint" android:text="@string/set_method_hint" />
+
+            <Switch android:id="@+id/swFallbackAcc" style="@style/SettingsSwitch" android:text="@string/set_fallback_acc" />
+            <Switch android:id="@+id/swFallbackProj" style="@style/SettingsSwitch" android:text="@string/set_fallback_proj" />
+
+            <TextView style="@style/SettingsSub" android:text="@string/set_state" />
+            <TextView android:id="@+id/tvState" style="@style/SettingsValue" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button android:id="@+id/btnDetect" style="@style/SettingsButton" android:text="@string/set_detect" />
+                <Button android:id="@+id/btnAcc" style="@style/SettingsButton" android:text="@string/set_open_acc" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button android:id="@+id/btnProj" style="@style/SettingsButton" android:text="@string/set_grant_proj" />
+                <Button android:id="@+id/btnProjStop" style="@style/SettingsButton" android:text="@string/set_stop_proj" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/SettingsRow">
+                <TextView style="@style/SettingsLabel" android:text="@string/set_adb_port" />
+                <EditText android:id="@+id/etAdbPort" style="@style/SettingsNumber" android:hint="@string/set_auto" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/SettingsRow">
+                <TextView style="@style/SettingsLabel" android:text="@string/set_collapse_wait" />
+                <EditText android:id="@+id/etCollapseWait" style="@style/SettingsNumber" />
+            </LinearLayout>
+
+            <Switch android:id="@+id/swCropNav" style="@style/SettingsSwitch" android:text="@string/set_crop_nav" />
+            <TextView style="@style/SettingsHint" android:text="@string/set_crop_nav_hint" />
+
+            <!-- ============ Output ============ -->
+            <TextView style="@style/SettingsHeader" android:text="@string/set_output" />
+
+            <RadioGroup
+                android:id="@+id/formatGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton android:id="@+id/rbJpeg" style="@style/SettingsRadioInline" android:text="JPEG" />
+                <RadioButton android:id="@+id/rbPng" style="@style/SettingsRadioInline" android:text="PNG" />
+                <RadioButton android:id="@+id/rbWebp" style="@style/SettingsRadioInline" android:text="WebP" />
+            </RadioGroup>
+
+            <LinearLayout style="@style/SettingsRow">
+                <TextView android:id="@+id/tvQuality" style="@style/SettingsLabel" />
+                <SeekBar
+                    android:id="@+id/seekQuality"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.4"
+                    android:max="99" />
+            </LinearLayout>
+
+            <Switch android:id="@+id/swMeta" style="@style/SettingsSwitch" android:text="@string/set_meta" />
+            <Switch android:id="@+id/swLogcat" style="@style/SettingsSwitch" android:text="@string/set_logcat" />
+            <TextView style="@style/SettingsHint" android:text="@string/set_logcat_hint" />
+
+            <LinearLayout style="@style/SettingsRow">
+                <TextView style="@style/SettingsLabel" android:text="@string/set_logcat_lines" />
+                <EditText android:id="@+id/etLogLines" style="@style/SettingsNumber" />
+            </LinearLayout>
+
+            <!-- ============ Thumbnail ============ -->
+            <TextView style="@style/SettingsHeader" android:text="@string/set_thumb" />
+
+            <Switch android:id="@+id/swThumb" style="@style/SettingsSwitch" android:text="@string/set_thumb_show" />
+
+            <LinearLayout style="@style/SettingsRow">
+                <TextView style="@style/SettingsLabel" android:text="@string/set_thumb_seconds" />
+                <EditText android:id="@+id/etThumbSec" style="@style/SettingsNumber" />
+            </LinearLayout>
+
+            <Button android:id="@+id/btnOverlay" style="@style/SettingsButton" android:text="@string/set_overlay_perm" />
+
+            <!-- ============ Server ============ -->
+            <TextView style="@style/SettingsHeader" android:text="@string/set_server" />
+
+            <Switch android:id="@+id/swServer" style="@style/SettingsSwitch" android:text="@string/set_server_enable" />
+
+            <LinearLayout style="@style/SettingsRow">
+                <TextView style="@style/SettingsLabel" android:text="@string/set_server_port" />
+                <EditText android:id="@+id/etServerPort" style="@style/SettingsNumber" />
+            </LinearLayout>
+
+            <Switch android:id="@+id/swServerZip" style="@style/SettingsSwitch" android:text="@string/set_server_zip" />
+            <TextView style="@style/SettingsHint" android:text="@string/set_server_zip_hint" />
+
+            <TextView android:id="@+id/tvServer" style="@style/SettingsValue" />
+
+            <Button android:id="@+id/btnToken" style="@style/SettingsButton" android:text="@string/set_new_token" />
+
+            <!-- ============ About ============ -->
+            <TextView style="@style/SettingsHeader" android:text="@string/set_about" />
+            <TextView android:id="@+id/tvAbout" style="@style/SettingsValue" android:textIsSelectable="true" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

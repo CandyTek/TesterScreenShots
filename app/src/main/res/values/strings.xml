@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tester Screenshot</string>
+    <string name="tile_label">Screenshot</string>
+    <string name="acc_service_label">Tester Screenshot capture</string>
+    <string name="acc_service_desc">Optional. Lets Tester Screenshot capture the screen (Android 11+) without root or ADB, close the notification shade and record which app was in the foreground. It does not read screen content otherwise.</string>
+
+    <!-- notification -->
+    <string name="notif_channel">Screenshot button</string>
+    <string name="notif_title">Tester Screenshot</string>
+    <string name="notif_text">%1$s · %2$s</string>
+    <string name="notif_no_method">no capture method — tap to set up</string>
+    <string name="action_screenshot">Screenshot</string>
+    <string name="action_screenshot_delay">Screenshot in 3 s</string>
+
+    <!-- methods -->
+    <string name="method_auto">Automatic (root → network ADB → optional fallbacks)</string>
+    <string name="method_root">Root</string>
+    <string name="method_adb">Network ADB</string>
+    <string name="method_accessibility">Accessibility service</string>
+    <string name="method_projection">Screen recording permission</string>
+
+    <!-- main -->
+    <string name="workspace">Workspace</string>
+    <string name="add_images">Add images</string>
+    <string name="settings">Settings</string>
+    <string name="back">Back</string>
+    <string name="delete">Delete</string>
+    <string name="close">Close</string>
+    <string name="rename">Rename</string>
+    <string name="empty_workspace">No screenshots in this workspace yet.\n\nPull down the notification shade and tap “Screenshot”, or use the Quick Settings tile.</string>
+    <string name="footer_count">%1$d images · %2$s · %3$s</string>
+    <string name="status_method">Capture method: %1$s</string>
+    <string name="status_no_method">No capture method available — tap to set up (root, network ADB, accessibility or screen recording)</string>
+    <string name="banner_storage">Storage permission is needed to save screenshots. Tap to grant.</string>
+    <string name="banner_overlay">Allow “display over other apps” so the thumbnail can appear after a capture. Tap to open settings.</string>
+    <string name="delete_title">Delete screenshot?</string>
+    <string name="delete_message">%1$s will be deleted permanently.</string>
+    <string name="toast_added">Added %1$d image(s)</string>
+    <string name="toast_capture_in">Capturing in %1$d s…</string>
+    <string name="toast_saved">Saved %1$s</string>
+    <string name="toast_adb_allow">Allow USB debugging for Tester Screenshot on this device (tick “Always allow”).</string>
+    <string name="switch_workspace">Switch workspace</string>
+    <string name="new_workspace">New workspace</string>
+    <string name="delete_workspace">Delete workspace</string>
+    <string name="delete_workspace_message">Delete workspace “%1$s” and its %2$d image(s)? This cannot be undone.</string>
+    <string name="hint_long_press_workspace">Long-press a workspace to rename or delete it</string>
+    <string name="err_create_workspace">Could not create the workspace folder (storage permission?)</string>
+    <string name="err_rename_workspace">Could not rename (name already exists?)</string>
+
+    <!-- QR / server -->
+    <string name="qr_title">LAN download QR code</string>
+    <string name="qr_title_ws">Scan to download “%1$s”</string>
+    <string name="qr_hint">The phone must be on the same network. Every workspace can be browsed from the page.</string>
+    <string name="copy_link">Copy link</string>
+    <string name="copied">Copied</string>
+    <string name="open_browser">Open</string>
+    <string name="server_not_running">The LAN server is not running</string>
+    <string name="server_disabled">The LAN server is disabled</string>
+    <string name="server_running">Running on port %1$d, all interfaces · token %2$s</string>
+    <string name="err_server">LAN server error: %1$s</string>
+    <string name="err_no_network">No Wi-Fi, Ethernet or hotspot network</string>
+    <string name="net_wifi">Wi-Fi</string>
+    <string name="net_ethernet">Ethernet</string>
+    <string name="net_hotspot">Hotspot</string>
+    <string name="net_usb">USB</string>
+    <string name="net_other">Other</string>
+
+    <!-- errors -->
+    <string name="err_no_method">Screenshot failed: no capture method available. Open Tester Screenshot → Settings.</string>
+    <string name="err_projection_unsupported">Screen recording is not supported on this device</string>
+
+    <!-- adb state -->
+    <string name="adb_state_closed">port %1$d not open</string>
+    <string name="adb_state_waiting">waiting for approval on port %1$d</string>
+    <string name="adb_state_ok">connected on port %1$d</string>
+    <string name="adb_state_failed">port %1$d: %2$s</string>
+
+    <!-- settings -->
+    <string name="set_capture">Capture</string>
+    <string name="set_method_hint">Automatic uses root if available, otherwise network ADB (adb tcpip) if its port is open, otherwise the optional fallbacks below.</string>
+    <string name="set_fallback_acc">Fallback: accessibility service (Android 11+)</string>
+    <string name="set_fallback_proj">Fallback: screen recording permission</string>
+    <string name="set_state">Status</string>
+    <string name="set_detecting">Detecting…</string>
+    <string name="set_detect">Detect again</string>
+    <string name="set_open_acc">Accessibility settings</string>
+    <string name="set_grant_proj">Grant screen recording</string>
+    <string name="set_stop_proj">Stop recording session</string>
+    <string name="set_adb_port">ADB port</string>
+    <string name="set_auto">auto</string>
+    <string name="set_collapse_wait">Shade collapse wait (ms)</string>
+    <string name="set_crop_nav">Crop the navigation bar when visible</string>
+    <string name="set_crop_nav_hint">Best effort; needs the overlay permission. The status bar is always kept when visible.</string>
+    <string name="set_active">Used now</string>
+    <string name="set_last_error">Last error</string>
+    <string name="set_output">Output</string>
+    <string name="set_quality">Quality: %1$d</string>
+    <string name="set_quality_lossless">Quality: lossless</string>
+    <string name="set_meta">Save a .txt with device / app details next to each screenshot</string>
+    <string name="set_logcat">Save a .log with recent logcat next to each screenshot</string>
+    <string name="set_logcat_hint">Needs root, network ADB, or: adb shell pm grant com.rc.testershot android.permission.READ_LOGS</string>
+    <string name="set_logcat_lines">Logcat lines</string>
+    <string name="set_thumb">Thumbnail</string>
+    <string name="set_thumb_show">Show thumbnail after a capture</string>
+    <string name="set_thumb_seconds">Hide after (s)</string>
+    <string name="set_overlay_perm">Overlay permission</string>
+    <string name="set_server">LAN server</string>
+    <string name="set_server_enable">Enable LAN server (shows the QR code)</string>
+    <string name="set_server_port">Port</string>
+    <string name="set_server_zip">Download as one zip file</string>
+    <string name="set_server_zip_hint">Off (default): the web page downloads the selected images directly, one file each. The browser may ask once to allow multiple downloads.</string>
+    <string name="set_new_token">New access token (invalidates old QR codes)</string>
+    <string name="set_about">About</string>
+    <string name="set_about_text">Tester Screenshot %1$s\nStorage: %2$s</string>
+
+    <string name="state_ok">available</string>
+    <string name="state_unknown">not checked yet</string>
+    <string name="state_no_su">no su binary</string>
+    <string name="state_denied">denied</string>
+    <string name="state_off">off</string>
+    <string name="state_none">none</string>
+    <string name="state_needs_11">needs Android 11+</string>
+</resources>

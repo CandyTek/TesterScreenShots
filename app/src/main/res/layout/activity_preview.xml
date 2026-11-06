@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ed_bg"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/ed_bar_height"
+        android:background="@color/ed_bar">
+
+        <LinearLayout
+            android:id="@+id/viewBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                style="@style/Widget.Ed.BarButton"
+                android:contentDescription="@string/ed_back"
+                android:src="@drawable/ic_ed_back" />
+
+            <TextView
+                android:id="@+id/txtName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="middle"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:singleLine="true"
+                android:textColor="@color/ed_text"
+                android:textSize="16sp" />
+
+            <ImageButton
+                android:id="@+id/btnShare"
+                style="@style/Widget.Ed.BarButton"
+                android:contentDescription="@string/ed_share"
+                android:src="@drawable/ic_ed_share" />
+
+            <ImageButton
+                android:id="@+id/btnDelete"
+                style="@style/Widget.Ed.BarButton"
+                android:contentDescription="@string/ed_delete"
+                android:src="@drawable/ic_ed_delete" />
+
+            <ImageButton
+                android:id="@+id/btnEdit"
+                style="@style/Widget.Ed.BarButton"
+                android:contentDescription="@string/ed_edit"
+                android:src="@drawable/ic_ed_edit" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/editBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <ImageButton
+                android:id="@+id/btnCancel"
+                style="@style/Widget.Ed.BarButton"
+                android:contentDescription="@string/ed_cancel"
+                android:src="@drawable/ic_ed_close" />
+
+            <TextView
+                android:id="@+id/txtEditTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:singleLine="true"
+                android:text="@string/ed_editing_title"
+                android:textColor="@color/ed_text"
+                android:textSize="16sp" />
+
+            <ImageButton
+                android:id="@+id/btnUndo"
+                style="@style/Widget.Ed.BarButton"
+                android:contentDescription="@string/ed_undo"
+                android:src="@drawable/ic_ed_undo" />
+
+            <ImageButton
+                android:id="@+id/btnRedo"
+                style="@style/Widget.Ed.BarButton"
+                android:contentDescription="@string/ed_redo"
+                android:src="@drawable/ic_ed_redo" />
+
+            <ImageButton
+                android:id="@+id/btnSave"
+                style="@style/Widget.Ed.BarButton"
+                android:contentDescription="@string/ed_save"
+                android:src="@drawable/ic_ed_check" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <com.rc.testershot.ui.EditorView
+            android:id="@+id/editor"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+        <TextView
+            android:id="@+id/txtHint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center_horizontal"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_ed_hint"
+            android:paddingStart="12dp"
+            android:paddingTop="6dp"
+            android:paddingEnd="12dp"
+            android:paddingBottom="6dp"
+            android:textColor="@color/ed_text"
+            android:textSize="13sp"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/editPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/ed_bar"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/cropBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/ed_row_height"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/btnCropReset"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:text="@string/ed_crop_reset"
+                android:textColor="@color/ed_text" />
+
+            <Button
+                android:id="@+id/btnCropApply"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ed_crop_apply"
+                android:textColor="@color/ed_accent" />
+        </LinearLayout>
+
+        <HorizontalScrollView
+            android:id="@+id/styleBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/ed_row_height"
+            android:fillViewport="true"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp">
+
+                <LinearLayout
+                    android:id="@+id/colorRow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@color/ed_divider" />
+
+                <ImageButton
+                    android:id="@+id/btnWidthThin"
+                    style="@style/Widget.Ed.ToolButton"
+                    android:contentDescription="@string/ed_width_thin"
+                    android:src="@drawable/ic_ed_width_thin" />
+
+                <ImageButton
+                    android:id="@+id/btnWidthMedium"
+                    style="@style/Widget.Ed.ToolButton"
+                    android:contentDescription="@string/ed_width_medium"
+                    android:src="@drawable/ic_ed_width_medium" />
+
+                <ImageButton
+                    android:id="@+id/btnWidthThick"
+                    style="@style/Widget.Ed.ToolButton"
+                    android:contentDescription="@string/ed_width_thick"
+                    android:src="@drawable/ic_ed_width_thick" />
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/ed_row_height"
+            android:fillViewport="true"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/toolRow"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp">
+
+                <ImageButton
+                    android:id="@+id/toolPen"
+                    style="@style/Widget.Ed.ToolButton"
+                    android:contentDescription="@string/ed_tool_pen"
+                    android:src="@drawable/ic_ed_pen" />
+
+                <ImageButton
+                    android:id="@+id/toolLine"
+                    style="@style/Widget.Ed.ToolButton"
+                    android:contentDescription="@string/ed_tool_line"
+                    android:src="@drawable/ic_ed_line" />
+
+                <ImageButton
+                    android:id="@+id/toolArrow"
+                    style="@style/Widget.Ed.ToolButton"
+                    android:contentDescription="@string/ed_tool_arrow"
+                    android:src="@drawable/ic_ed_arrow" />
+
+                <ImageButton
+                    android:id="@+id/toolRect"
+                    style="@style/Widget.Ed.ToolButton"
+                    android:contentDescription="@string/ed_tool_rect"
+                    android:src="@drawable/ic_ed_rect" />
+
+                <ImageButton
+                    android:id="@+id/toolOval"
+                    style="@style/Widget.Ed.ToolButton"
+                    android:contentDescription="@string/ed_tool_oval"
+                    android:src="@drawable/ic_ed_oval" />
+
+                <ImageButton
+                    android:id="@+id/toolText"
+                    style="@style/Widget.Ed.ToolButton"
+                    android:contentDescription="@string/ed_tool_text"
+                    android:src="@drawable/ic_ed_text" />
+
+                <ImageButton
+                    android:id="@+id/toolMosaic"
+                    style="@style/Widget.Ed.ToolButton"
+                    android:contentDescription="@string/ed_tool_mosaic"
+                    android:src="@drawable/ic_ed_mosaic" />
+
+                <ImageButton
+                    android:id="@+id/toolCrop"
+                    style="@style/Widget.Ed.ToolButton"
+                    android:contentDescription="@string/ed_tool_crop"
+                    android:src="@drawable/ic_ed_crop" />
+            </LinearLayout>
+        </HorizontalScrollView>
+    </LinearLayout>
+</LinearLayout>

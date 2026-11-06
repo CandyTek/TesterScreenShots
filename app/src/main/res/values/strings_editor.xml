@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ed_back">Back</string>
+    <string name="ed_share">Share</string>
+    <string name="ed_delete">Delete</string>
+    <string name="ed_edit">Edit</string>
+    <string name="ed_cancel">Cancel editing</string>
+    <string name="ed_undo">Undo</string>
+    <string name="ed_redo">Redo</string>
+    <string name="ed_save">Save</string>
+    <string name="ed_editing_title">Edit</string>
+
+    <string name="ed_tool_pen">Pen</string>
+    <string name="ed_tool_line">Line</string>
+    <string name="ed_tool_arrow">Arrow</string>
+    <string name="ed_tool_rect">Rectangle</string>
+    <string name="ed_tool_oval">Oval</string>
+    <string name="ed_tool_text">Text</string>
+    <string name="ed_tool_mosaic">Mosaic</string>
+    <string name="ed_tool_crop">Crop</string>
+    <string name="ed_width_thin">Thin</string>
+    <string name="ed_width_medium">Medium</string>
+    <string name="ed_width_thick">Thick</string>
+    <string name="ed_color_red">Red</string>
+    <string name="ed_color_yellow">Yellow</string>
+    <string name="ed_color_green">Green</string>
+    <string name="ed_color_blue">Blue</string>
+    <string name="ed_color_white">White</string>
+    <string name="ed_color_black">Black</string>
+
+    <string name="ed_crop_apply">Apply crop</string>
+    <string name="ed_crop_reset">Reset</string>
+    <string name="ed_crop_nothing">Drag the crop handles first</string>
+
+    <string name="ed_hint_text">Tap the image where the text should go</string>
+    <string name="ed_hint_text_tap">Tap the image to add text</string>
+    <string name="ed_hint_mosaic">Drag over an area to pixelate it</string>
+    <string name="ed_hint_crop">Drag the handles, then tap Apply crop</string>
+
+    <string name="ed_text_title">Add text</string>
+    <string name="ed_text_hint">Text</string>
+    <string name="ed_ok">OK</string>
+    <string name="ed_dialog_cancel">Cancel</string>
+
+    <string name="ed_delete_title">Delete screenshot?</string>
+    <string name="ed_delete_message">%1$s and its metadata files will be permanently deleted.</string>
+    <string name="ed_delete_failed">Could not delete the file</string>
+
+    <string name="ed_discard_title">Discard changes?</string>
+    <string name="ed_discard_message">Your annotations will be lost.</string>
+    <string name="ed_discard">Discard</string>
+    <string name="ed_keep_editing">Keep editing</string>
+
+    <string name="ed_save_title">Save edited image</string>
+    <string name="ed_save_overwrite">Overwrite original</string>
+    <string name="ed_save_copy">Save as copy</string>
+    <string name="ed_save_copy_png">Save as copy (PNG)</string>
+    <string name="ed_saving">Saving…</string>
+    <string name="ed_saved">Saved: %1$s</string>
+    <string name="ed_save_failed">Save failed: %1$s</string>
+    <string name="ed_no_changes">No changes</string>
+
+    <string name="ed_load_failed">Could not open the image</string>
+    <string name="ed_downscaled">Large image: shown and saved at reduced resolution</string>
+    <string name="ed_out_of_memory">Not enough memory for this step</string>
+    <string name="ed_share_title">Share screenshot</string>
+    <string name="ed_share_failed">Could not share the image</string>
+</resources>

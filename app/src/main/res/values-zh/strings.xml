@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">测试截图</string>
+    <string name="tile_label">截图</string>
+    <string name="acc_service_label">测试截图 - 截屏服务</string>
+    <string name="acc_service_desc">可选。在没有 root 或 ADB 时，让“测试截图”可以截屏（Android 11+）、收起通知栏并记录前台应用。除此之外不会读取屏幕内容。</string>
+
+    <string name="notif_channel">截图按钮</string>
+    <string name="notif_title">测试截图</string>
+    <string name="notif_text">%1$s · %2$s</string>
+    <string name="notif_no_method">无可用截图方式 — 点击设置</string>
+    <string name="action_screenshot">截图</string>
+    <string name="action_screenshot_delay">3 秒后截图</string>
+
+    <string name="method_auto">自动（root → 网络 ADB → 可选的后备方式）</string>
+    <string name="method_root">Root</string>
+    <string name="method_adb">网络 ADB</string>
+    <string name="method_accessibility">无障碍服务</string>
+    <string name="method_projection">录屏权限</string>
+
+    <string name="workspace">工作区</string>
+    <string name="add_images">添加图片</string>
+    <string name="settings">设置</string>
+    <string name="back">返回</string>
+    <string name="delete">删除</string>
+    <string name="close">关闭</string>
+    <string name="rename">重命名</string>
+    <string name="empty_workspace">此工作区还没有截图。\n\n下拉通知栏点击“截图”，或使用快速设置磁贴。</string>
+    <string name="footer_count">%1$d 张 · %2$s · %3$s</string>
+    <string name="status_method">截图方式：%1$s</string>
+    <string name="status_no_method">没有可用的截图方式 — 点击设置（root、网络 ADB、无障碍或录屏）</string>
+    <string name="banner_storage">保存截图需要存储权限，点击授予。</string>
+    <string name="banner_overlay">请允许“显示在其他应用上层”，以便截图后显示缩略图。点击打开设置。</string>
+    <string name="delete_title">删除截图？</string>
+    <string name="delete_message">将永久删除 %1$s。</string>
+    <string name="toast_added">已添加 %1$d 张图片</string>
+    <string name="toast_capture_in">%1$d 秒后截图…</string>
+    <string name="toast_saved">已保存 %1$s</string>
+    <string name="toast_adb_allow">请在本机上允许“测试截图”的 USB 调试（勾选“始终允许”）。</string>
+    <string name="switch_workspace">切换工作区</string>
+    <string name="new_workspace">新建工作区</string>
+    <string name="delete_workspace">删除工作区</string>
+    <string name="delete_workspace_message">删除工作区“%1$s”及其中 %2$d 张图片？此操作无法撤销。</string>
+    <string name="hint_long_press_workspace">长按工作区可重命名或删除</string>
+    <string name="err_create_workspace">无法创建工作区文件夹（存储权限？）</string>
+    <string name="err_rename_workspace">无法重命名（名称已存在？）</string>
+
+    <string name="qr_title">局域网下载二维码</string>
+    <string name="qr_title_ws">扫码下载“%1$s”</string>
+    <string name="qr_hint">手机需与本机处于同一网络。网页中可以浏览所有工作区。</string>
+    <string name="copy_link">复制链接</string>
+    <string name="copied">已复制</string>
+    <string name="open_browser">打开</string>
+    <string name="server_not_running">局域网服务未运行</string>
+    <string name="server_disabled">局域网服务已关闭</string>
+    <string name="server_running">运行中，端口 %1$d，监听所有网卡 · 令牌 %2$s</string>
+    <string name="err_server">局域网服务错误：%1$s</string>
+    <string name="err_no_network">没有 Wi-Fi、以太网或热点网络</string>
+    <string name="net_wifi">Wi-Fi</string>
+    <string name="net_ethernet">以太网</string>
+    <string name="net_hotspot">热点</string>
+    <string name="net_usb">USB</string>
+    <string name="net_other">其他</string>
+
+    <string name="err_no_method">截图失败：没有可用的截图方式。请打开“测试截图”→ 设置。</string>
+    <string name="err_projection_unsupported">此设备不支持录屏</string>
+
+    <string name="adb_state_closed">端口 %1$d 未开放</string>
+    <string name="adb_state_waiting">等待在端口 %1$d 上授权</string>
+    <string name="adb_state_ok">已连接，端口 %1$d</string>
+    <string name="adb_state_failed">端口 %1$d：%2$s</string>
+
+    <string name="set_capture">截图</string>
+    <string name="set_method_hint">自动：有 root 时用 root；否则若网络 ADB（adb tcpip）端口已开放则用 ADB；否则使用下面勾选的后备方式。</string>
+    <string name="set_fallback_acc">后备：无障碍服务（Android 11+）</string>
+    <string name="set_fallback_proj">后备：录屏权限</string>
+    <string name="set_state">状态</string>
+    <string name="set_detecting">检测中…</string>
+    <string name="set_detect">重新检测</string>
+    <string name="set_open_acc">无障碍设置</string>
+    <string name="set_grant_proj">授予录屏权限</string>
+    <string name="set_stop_proj">停止录屏会话</string>
+    <string name="set_adb_port">ADB 端口</string>
+    <string name="set_auto">自动</string>
+    <string name="set_collapse_wait">等待通知栏收起（毫秒）</string>
+    <string name="set_crop_nav">导航栏可见时裁掉导航栏</string>
+    <string name="set_crop_nav_hint">尽力而为，需要悬浮窗权限。状态栏可见时始终保留。</string>
+    <string name="set_active">当前使用</string>
+    <string name="set_last_error">最近错误</string>
+    <string name="set_output">输出</string>
+    <string name="set_quality">质量：%1$d</string>
+    <string name="set_quality_lossless">质量：无损</string>
+    <string name="set_meta">在每张截图旁保存设备/应用信息 .txt</string>
+    <string name="set_logcat">在每张截图旁保存最近的 logcat .log</string>
+    <string name="set_logcat_hint">需要 root、网络 ADB，或执行：adb shell pm grant com.rc.testershot android.permission.READ_LOGS</string>
+    <string name="set_logcat_lines">Logcat 行数</string>
+    <string name="set_thumb">缩略图</string>
+    <string name="set_thumb_show">截图后显示缩略图</string>
+    <string name="set_thumb_seconds">自动隐藏（秒）</string>
+    <string name="set_overlay_perm">悬浮窗权限</string>
+    <string name="set_server">局域网服务</string>
+    <string name="set_server_enable">启用局域网服务（显示二维码）</string>
+    <string name="set_server_port">端口</string>
+    <string name="set_server_zip">打包为一个 zip 下载</string>
+    <string name="set_server_zip_hint">关闭（默认）：网页直接批量下载所选图片，每张一个文件。浏览器可能会询问一次是否允许下载多个文件。</string>
+    <string name="set_new_token">生成新访问令牌（旧二维码失效）</string>
+    <string name="set_about">关于</string>
+    <string name="set_about_text">测试截图 %1$s\n存储位置：%2$s</string>
+
+    <string name="state_ok">可用</string>
+    <string name="state_unknown">尚未检测</string>
+    <string name="state_no_su">没有 su</string>
+    <string name="state_denied">被拒绝</string>
+    <string name="state_off">未开启</string>
+    <string name="state_none">无</string>
+    <string name="state_needs_11">需要 Android 11+</string>
+</resources>

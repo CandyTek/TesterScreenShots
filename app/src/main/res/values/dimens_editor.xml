@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="ed_bar_height">56dp</dimen>
+    <dimen name="ed_row_height">52dp</dimen>
+    <dimen name="ed_tool_size">44dp</dimen>
+    <dimen name="ed_swatch_size">28dp</dimen>
+</resources>

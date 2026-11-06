@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="referrer" content="no-referrer">
+<title>TesterScreenShot</title>
+<style>
+:root{
+  --bg:#f5f6f8;--card:#fff;--fg:#1b1d21;--muted:#6b7280;--line:#e2e5ea;
+  --accent:#2563eb;--accent-fg:#fff;--sel:#2563eb;--shadow:0 1px 3px rgba(0,0,0,.08);
+  --bar:rgba(255,255,255,.94);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#111317;--card:#1c1f25;--fg:#e8eaee;--muted:#9aa1ad;--line:#2c3039;
+    --accent:#4c8dff;--accent-fg:#fff;--sel:#4c8dff;--shadow:0 1px 3px rgba(0,0,0,.4);
+    --bar:rgba(22,24,29,.94);
+  }
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--fg);
+  font:15px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;
+  -webkit-text-size-adjust:100%}
+button,select,input{font:inherit;color:inherit}
+header{position:sticky;top:0;z-index:5;background:var(--bar);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);padding:10px 12px;padding-top:max(10px,env(safe-area-inset-top))}
+.row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.title{font-weight:600;font-size:13px;color:var(--muted);margin-right:auto;white-space:nowrap}
+.wsbox{display:flex;align-items:center;gap:8px;flex:1 1 220px;min-width:0}
+select{flex:1;min-width:0;padding:8px 10px;border-radius:10px;border:1px solid var(--line);
+  background:var(--card);font-weight:600;font-size:16px}
+.btn{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:8px 12px;cursor:pointer;
+  white-space:nowrap;-webkit-tap-highlight-color:transparent}
+.btn:active{transform:scale(.97)}
+.btn.primary{background:var(--accent);color:var(--accent-fg);border-color:var(--accent);font-weight:600}
+.btn:disabled{opacity:.45;cursor:default}
+.tools{margin-top:8px;font-size:14px;color:var(--muted)}
+.tools .spacer{flex:1}
+main{padding:12px;padding-bottom:110px;max-width:1600px;margin:0 auto}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));min-width:0;gap:10px}
+@media (max-width:420px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}}
+.card{position:relative;min-width:0;background:var(--card);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);
+  border:2px solid transparent;transition:border-color .12s}
+.card.on{border-color:var(--sel)}
+.thumb{display:block;width:100%;max-width:100%;aspect-ratio:1/1;object-fit:contain;background:var(--line);cursor:zoom-in}
+@supports not (aspect-ratio:1){.thumb{height:180px}}
+.chk{position:absolute;top:0;left:0;padding:8px;cursor:pointer;line-height:0}
+.chk input{width:24px;height:24px;margin:0;accent-color:var(--sel);cursor:pointer}
+.meta{padding:6px 8px;font-size:12px;color:var(--muted);display:flex;gap:6px;align-items:center}
+.meta .n{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;min-width:0}
+.tag{font-size:10px;border:1px solid var(--line);border-radius:6px;padding:0 4px}
+.empty,.err{text-align:center;color:var(--muted);padding:60px 16px}
+.err{color:#d33}
+footer{position:fixed;left:0;right:0;bottom:0;z-index:6;background:var(--bar);backdrop-filter:blur(8px);
+  border-top:1px solid var(--line);padding:10px 12px;padding-bottom:max(10px,env(safe-area-inset-bottom))}
+footer .row{max-width:1600px;margin:0 auto}
+footer label{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--muted);cursor:pointer}
+footer .btn.primary{margin-left:auto;padding:12px 18px;font-size:16px}
+/* lightbox */
+#lb{position:fixed;inset:0;z-index:20;background:#000;display:none;flex-direction:column;color:#fff;
+  touch-action:pan-y pinch-zoom}
+#lb.open{display:flex}
+#lb .top,#lb .bot{display:flex;align-items:center;gap:8px;padding:10px 12px;background:rgba(0,0,0,.55)}
+#lb .top{padding-top:max(10px,env(safe-area-inset-top))}
+#lb .bot{padding-bottom:max(10px,env(safe-area-inset-bottom))}
+#lb .name{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px;opacity:.85}
+#lb .stage{flex:1;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+#lb img{max-width:100%;max-height:100%;object-fit:contain;user-select:none;-webkit-user-drag:none}
+#lb .nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.12);border:0;color:#fff;
+  width:44px;height:64px;border-radius:10px;font-size:28px;cursor:pointer}
+#lb .prev{left:8px}#lb .next{right:8px}
+@media (hover:none){#lb .nav{display:none}}
+#lb .lbtn{background:rgba(255,255,255,.14);border:0;color:#fff;border-radius:10px;padding:8px 12px;
+  text-decoration:none;cursor:pointer;font-size:14px;white-space:nowrap}
+#lb label{display:flex;align-items:center;gap:6px;font-size:14px;cursor:pointer}
+#lb label input{width:20px;height:20px}
+#lb .spin{position:absolute;color:#aaa;font-size:13px}
+</style>
+</head>
+<body>
+<header>
+  <div class="row">
+    <div class="wsbox">
+      <span class="title" id="tWs">Workspace</span>
+      <select id="ws" aria-label="workspace"></select>
+    </div>
+    <button class="btn" id="refresh" type="button">&#x21bb; <span id="tRefresh">Refresh</span></button>
+  </div>
+  <div class="row tools">
+    <button class="btn" id="toggle" type="button">Select none</button>
+    <span class="spacer"></span>
+    <span id="summary"></span>
+  </div>
+</header>
+<main>
+  <div class="grid" id="grid"></div>
+  <div id="msg"></div>
+</main>
+<footer>
+  <div class="row">
+    <label><input type="checkbox" id="side"> <span id="tSide">Include logs/metadata</span></label>
+    <button class="btn primary" id="dl" type="button">Download</button>
+  </div>
+</footer>
+
+<div id="lb" role="dialog" aria-modal="true">
+  <div class="top">
+    <button class="lbtn" id="lbClose" type="button">&#x2715;</button>
+    <span class="name" id="lbName"></span>
+    <span id="lbPos" style="font-size:13px;opacity:.8"></span>
+  </div>
+  <div class="stage" id="lbStage">
+    <span class="spin" id="lbSpin">&#x2026;</span>
+    <img id="lbImg" alt="">
+    <button class="nav prev" id="lbPrev" type="button">&#x2039;</button>
+    <button class="nav next" id="lbNext" type="button">&#x203a;</button>
+  </div>
+  <div class="bot">
+    <label><input type="checkbox" id="lbSel"> <span id="tSel">Selected</span></label>
+    <span style="flex:1"></span>
+    <a class="lbtn" id="lbDl" href="#" download>&#x2193; <span id="tDlOne">Download</span></a>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var ZH = /^zh/i.test(navigator.language || '');
+  var T = ZH ? {
+    ws: '工作区', refresh: '刷新', all: '全选', none: '全不选',
+    side: '包含日志/元数据', dl: '下载所选 ({n})', dlOne: '下载', sel: '已选中',
+    summary: '已选 {s} / {n} 张 · {size}', empty: '这个工作区还没有截图。',
+    loading: '加载中…', denied: '访问被拒绝：令牌无效。请在应用中重新扫描二维码。',
+    failed: '加载失败：', current: '（当前）', nothing: '请至少选择一张截图。'
+  } : {
+    ws: 'Workspace', refresh: 'Refresh', all: 'Select all', none: 'Select none',
+    side: 'Include logs/metadata', dl: 'Download selected ({n})', dlOne: 'Download', sel: 'Selected',
+    summary: '{s} of {n} selected · {size}', empty: 'No screenshots in this workspace yet.',
+    loading: 'Loading…', denied: 'Access denied: invalid token. Scan the QR code in the app again.',
+    failed: 'Failed to load: ', current: ' (current)', nothing: 'Select at least one screenshot.'
+  };
+  if (ZH) document.documentElement.lang = 'zh-CN';
+
+  function $(id) { return document.getElementById(id); }
+  function fmt(s, o) { return s.replace(/\{(\w+)\}/g, function (_, k) { return o[k]; }); }
+  function size(b) {
+    if (b < 1024) return b + ' B';
+    if (b < 1048576) return (b / 1024).toFixed(0) + ' KB';
+    if (b < 1073741824) return (b / 1048576).toFixed(1) + ' MB';
+    return (b / 1073741824).toFixed(2) + ' GB';
+  }
+
+  var token = new URLSearchParams(location.search).get('t') || '';
+  function withT(url) {
+    if (!token) return url;
+    return url + (url.indexOf('?') < 0 ? '?' : '&') + 't=' + encodeURIComponent(token);
+  }
+  function fileUrl(kind, ws, name, extra) {
+    return withT('/' + kind + '/' + encodeURIComponent(ws) + '/' + encodeURIComponent(name) + (extra || ''));
+  }
+
+  var state = { ws: null, files: [], sel: {}, lb: -1 };
+
+  $('tWs').textContent = T.ws;
+  $('tRefresh').textContent = T.refresh;
+  $('tSide').textContent = T.side;
+  $('tDlOne').textContent = T.dlOne;
+  $('tSel').textContent = T.sel;
+
+  function getJson(url) {
+    return fetch(withT(url), { credentials: 'same-origin', cache: 'no-store' }).then(function (r) {
+      if (r.status === 403) throw new Error(T.denied);
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    });
+  }
+
+  function showMsg(text, isErr) {
+    var m = $('msg');
+    m.className = text ? (isErr ? 'err' : 'empty') : '';
+    m.textContent = text || '';
+  }
+
+  // ---------- workspaces
+  function loadWorkspaces() {
+    return getJson('/api/workspaces').then(function (list) {
+      var sel = $('ws');
+      sel.innerHTML = '';
+      var wanted = state.ws || hashWs();
+      var found = false, cur = null;
+      list.forEach(function (w) {
+        var o = document.createElement('option');
+        o.value = w.name;
+        o.textContent = w.name + (w.current ? T.current : '') + ' · ' + w.count;
+        sel.appendChild(o);
+        if (w.name === wanted) found = true;
+        if (w.current) cur = w.name;
+      });
+      state.ws = found ? wanted : (cur || (list[0] && list[0].name) || null);
+      if (state.ws !== null) sel.value = state.ws;
+    });
+  }
+  function hashWs() {
+    var m = /(?:^#|&)ws=([^&]*)/.exec(location.hash);
+    if (!m) return null;
+    try { return decodeURIComponent(m[1]); } catch (e) { return null; }
+  }
+  function setHash() {
+    try { history.replaceState(null, '', location.pathname + location.search + '#ws=' + encodeURIComponent(state.ws)); }
+    catch (e) { /* ignore */ }
+  }
+
+  // ---------- files
+  function loadFiles(keepSel) {
+    if (state.ws === null) return Promise.resolve();
+    showMsg(T.loading);
+    return getJson('/api/list?ws=' + encodeURIComponent(state.ws)).then(function (data) {
+      var old = keepSel ? state.sel : {};
+      state.zip = !!data.zip;
+      state.files = data.files || [];
+      state.sel = {};
+      state.files.forEach(function (f) {
+        state.sel[f.name] = Object.prototype.hasOwnProperty.call(old, f.name) ? old[f.name] : true;
+      });
+      render();
+      showMsg(state.files.length ? '' : T.empty);
+    });
+  }
+
+  var io = 'IntersectionObserver' in window ? new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { var img = e.target; img.src = img.getAttribute('data-src'); io.unobserve(img); }
+    });
+  }, { rootMargin: '400px 0px' }) : null;
+
+  function render() {
+    var grid = $('grid');
+    if (io) io.disconnect();
+    grid.innerHTML = '';
+    var frag = document.createDocumentFragment();
+    state.files.forEach(function (f, i) {
+      var card = document.createElement('div');
+      card.className = 'card' + (state.sel[f.name] ? ' on' : '');
+      card.setAttribute('data-i', i);
+
+      var img = document.createElement('img');
+      img.className = 'thumb';
+      img.alt = f.name;
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      var src = fileUrl('thumb', state.ws, f.name, '?v=' + f.mtime + '-' + f.size);
+      if (io) { img.setAttribute('data-src', src); io.observe(img); } else img.src = src;
+      img.addEventListener('click', function () { openLb(i); });
+
+      var lab = document.createElement('label');
+      lab.className = 'chk';
+      var cb = document.createElement('input');
+      cb.type = 'checkbox';
+      cb.checked = !!state.sel[f.name];
+      cb.addEventListener('change', function () { setSel(f.name, cb.checked); });
+      lab.appendChild(cb);
+
+      var meta = document.createElement('div');
+      meta.className = 'meta';
+      var n = document.createElement('span');
+      n.className = 'n';
+      n.textContent = f.name;
+      n.title = f.name;
+      meta.appendChild(n);
+      if (f.sidecars && f.sidecars.length) {
+        f.sidecars.forEach(function (s) {
+          var t = document.createElement('span');
+          t.className = 'tag';
+          t.textContent = s.slice(s.lastIndexOf('.') + 1);
+          meta.appendChild(t);
+        });
+      }
+      card.appendChild(img);
+      card.appendChild(lab);
+      card.appendChild(meta);
+      frag.appendChild(card);
+    });
+    grid.appendChild(frag);
+    updateSummary();
+  }
+
+  function setSel(name, on) {
+    state.sel[name] = on;
+    var i = indexOf(name);
+    var card = $('grid').children[i];
+    if (card) {
+      card.classList.toggle('on', on);
+      card.querySelector('input').checked = on;
+    }
+    if (state.lb === i) $('lbSel').checked = on;
+    updateSummary();
+  }
+  function indexOf(name) {
+    for (var i = 0; i < state.files.length; i++) if (state.files[i].name === name) return i;
+    return -1;
+  }
+  function selected() {
+    return state.files.filter(function (f) { return state.sel[f.name]; });
+  }
+  function updateSummary() {
+    var s = selected();
+    var bytes = s.reduce(function (a, f) { return a + (f.size || 0); }, 0);
+    $('summary').textContent = fmt(T.summary, { s: s.length, n: state.files.length, size: size(bytes) });
+    $('dl').textContent = fmt(T.dl, { n: s.length });
+    $('dl').disabled = s.length === 0;
+    var all = state.files.length > 0 && s.length === state.files.length;
+    $('toggle').textContent = all ? T.none : T.all;
+    $('toggle').disabled = state.files.length === 0;
+  }
+
+  $('toggle').addEventListener('click', function () {
+    var all = selected().length === state.files.length;
+    state.files.forEach(function (f) { state.sel[f.name] = !all; });
+    var cards = $('grid').children;
+    for (var i = 0; i < cards.length; i++) {
+      cards[i].classList.toggle('on', !all);
+      cards[i].querySelector('input').checked = !all;
+    }
+    updateSummary();
+  });
+
+  // ---------- download: individual files by default, one zip if enabled in the app's settings
+  var dlTimer = null;
+  function downloadFiles(s) {
+    var names = [];
+    s.forEach(function (f) {
+      names.push(f.name);
+      if ($('side').checked && f.sidecars) f.sidecars.forEach(function (n) { names.push(n); });
+    });
+    if (dlTimer) clearTimeout(dlTimer);
+    var i = 0;
+    (function next() {
+      if (i >= names.length) { dlTimer = null; return; }
+      var a = document.createElement('a');
+      a.href = fileUrl('img', state.ws, names[i], '?dl=1');
+      a.setAttribute('download', names[i]);
+      a.style.display = 'none';
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function () { a.remove(); }, 2000);
+      i++;
+      // Spaced out so the browser treats each as its own download.
+      dlTimer = setTimeout(next, 400);
+    })();
+  }
+
+  $('dl').addEventListener('click', function () {
+    var s = selected();
+    if (!s.length) { alert(T.nothing); return; }
+    if (!state.zip) { downloadFiles(s); return; }
+    var form = document.createElement('form');
+    form.method = 'POST';
+    form.action = withT('/zip');
+    form.enctype = 'application/x-www-form-urlencoded';
+    form.style.display = 'none';
+    function add(k, v) {
+      var i = document.createElement('input');
+      i.type = 'hidden'; i.name = k; i.value = v;
+      form.appendChild(i);
+    }
+    add('ws', state.ws);
+    if ($('side').checked) add('side', '1');
+    s.forEach(function (f) { add('f', f.name); });
+    document.body.appendChild(form);
+    form.submit();
+    setTimeout(function () { form.remove(); }, 1000);
+  });
+
+  // ---------- workspace switch / refresh
+  $('ws').addEventListener('change', function () {
+    state.ws = $('ws').value;
+    setHash();
+    loadFiles(false).catch(fail);
+  });
+  $('refresh').addEventListener('click', function () {
+    loadWorkspaces().then(function () { return loadFiles(true); }).catch(fail);
+  });
+  function fail(e) {
+    showMsg((e && e.message === T.denied) ? T.denied : T.failed + (e && e.message || e), true);
+  }
+
+  // ---------- lightbox
+  var lb = $('lb'), lbImg = $('lbImg');
+  function openLb(i) {
+    if (i < 0 || i >= state.files.length) return;
+    state.lb = i;
+    var f = state.files[i];
+    $('lbSpin').style.display = '';
+    lbImg.style.visibility = 'hidden';
+    lbImg.src = fileUrl('img', state.ws, f.name, '?v=' + f.mtime);
+    lbImg.alt = f.name;
+    $('lbName').textContent = f.name;
+    $('lbPos').textContent = (i + 1) + ' / ' + state.files.length;
+    $('lbDl').href = fileUrl('img', state.ws, f.name, '?dl=1');
+    $('lbDl').setAttribute('download', f.name);
+    $('lbSel').checked = !!state.sel[f.name];
+    if (!lb.classList.contains('open')) {
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    // preload neighbours
+    [i - 1, i + 1].forEach(function (j) {
+      if (j >= 0 && j < state.files.length) {
+        var p = new Image();
+        p.src = fileUrl('img', state.ws, state.files[j].name, '?v=' + state.files[j].mtime);
+      }
+    });
+  }
+  lbImg.addEventListener('load', function () { $('lbSpin').style.display = 'none'; lbImg.style.visibility = ''; });
+  lbImg.addEventListener('error', function () { $('lbSpin').style.display = 'none'; });
+  function closeLb() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+    lbImg.removeAttribute('src');
+    var card = $('grid').children[state.lb];
+    state.lb = -1;
+    if (card && card.scrollIntoView) card.scrollIntoView({ block: 'nearest' });
+  }
+  function step(d) {
+    if (state.lb < 0) return;
+    var n = state.lb + d;
+    if (n >= 0 && n < state.files.length) openLb(n);
+  }
+  $('lbClose').addEventListener('click', closeLb);
+  $('lbPrev').addEventListener('click', function (e) { e.stopPropagation(); step(-1); });
+  $('lbNext').addEventListener('click', function (e) { e.stopPropagation(); step(1); });
+  $('lbSel').addEventListener('change', function () {
+    if (state.lb >= 0) setSel(state.files[state.lb].name, $('lbSel').checked);
+  });
+  $('lbStage').addEventListener('click', function (e) {
+    if (e.target === $('lbStage')) closeLb();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (state.lb < 0) return;
+    if (e.key === 'Escape') closeLb();
+    else if (e.key === 'ArrowLeft') step(-1);
+    else if (e.key === 'ArrowRight') step(1);
+    else if (e.key === ' ') { e.preventDefault(); $('lbSel').click(); }
+  });
+  // swipe
+  var sx = 0, sy = 0, st = 0, multi = false;
+  $('lbStage').addEventListener('touchstart', function (e) {
+    multi = e.touches.length > 1;
+    if (multi) return;
+    sx = e.touches[0].clientX; sy = e.touches[0].clientY; st = Date.now();
+  }, { passive: true });
+  $('lbStage').addEventListener('touchmove', function (e) {
+    if (e.touches.length > 1) multi = true;
+  }, { passive: true });
+  $('lbStage').addEventListener('touchend', function (e) {
+    if (multi || !e.changedTouches.length) return;
+    if (window.visualViewport && window.visualViewport.scale > 1.05) return; // user is zoomed in
+    var dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+    if (Date.now() - st < 800 && Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) step(dx < 0 ? 1 : -1);
+    else if (Date.now() - st < 800 && dy > 90 && Math.abs(dy) > Math.abs(dx) * 1.5) closeLb();
+  }, { passive: true });
+  window.addEventListener('popstate', function () { if (state.lb >= 0) closeLb(); });
+
+  // ---------- start
+  updateSummary();
+  loadWorkspaces().then(function () {
+    if (state.ws !== null) setHash();
+    return loadFiles(false);
+  }).catch(fail);
+})();
+</script>
+</body>
+</html>
