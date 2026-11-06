@@ -141,6 +141,9 @@
                 <EditText android:id="@+id/etThumbSec" style="@style/SettingsNumber" />
             </LinearLayout>
 
+            <Switch android:id="@+id/swBall" style="@style/SettingsSwitch" android:text="@string/set_ball" />
+            <TextView style="@style/SettingsHint" android:text="@string/set_ball_hint" />
+
             <Button android:id="@+id/btnOverlay" style="@style/SettingsButton" android:text="@string/set_overlay_perm" />
 
             <!-- ============ Server ============ -->

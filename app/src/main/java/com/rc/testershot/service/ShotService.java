@@ -74,12 +74,21 @@ public class ShotService extends Service implements CaptureEngine.Listener {
         startForeground(NOTIF_ID, buildNotification());
         engine.detectAsync(false);
         applyServer();
+        engine.floatingBall().apply();
+    }
+
+    @Override
+    public void onConfigurationChanged(android.content.res.Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        engine.floatingBall().onConfigurationChanged();
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         // Always re-assert foreground (startForegroundService contract).
         startForeground(NOTIF_ID, buildNotification());
+        // Settings / overlay permission may have changed.
+        engine.floatingBall().apply();
         String action = intent != null ? intent.getAction() : null;
         if (ACTION_CAPTURE.equals(action)) {
             engine.trigger(intent.getIntExtra(EXTRA_DELAY, 0));
@@ -190,6 +199,7 @@ public class ShotService extends Service implements CaptureEngine.Listener {
     @Override
     public void onDestroy() {
         engine.removeListener(this);
+        engine.floatingBall().remove();
         server.apply(this, false, 0);
         running = null;
         super.onDestroy();

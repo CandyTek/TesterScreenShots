@@ -98,6 +98,8 @@
     <string name="set_thumb_show">截图后显示缩略图</string>
     <string name="set_thumb_seconds">自动隐藏（秒）</string>
     <string name="set_overlay_perm">悬浮窗权限</string>
+    <string name="set_ball">显示截图悬浮球</string>
+    <string name="set_ball_hint">点击立即截图。长按后拖动可移动；拖到左右边缘附近松手会贴边半隐藏，放在其他位置则完整显示。悬浮球不会出现在截图中。</string>
     <string name="set_server">局域网服务</string>
     <string name="set_server_enable">启用局域网服务（显示二维码）</string>
     <string name="set_server_port">端口</string>

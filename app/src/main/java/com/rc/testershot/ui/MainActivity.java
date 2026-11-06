@@ -97,6 +97,7 @@ public class MainActivity extends Activity implements CaptureEngine.Listener {
     protected void onResume() {
         super.onResume();
         CaptureEngine.get(this).addListener(this);
+        ShotService.start(this, ShotService.ACTION_REFRESH); // e.g. overlay permission just granted -> show ball
         reload();
         updateStatus();
         updateQr();

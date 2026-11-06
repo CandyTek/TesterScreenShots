@@ -90,6 +90,10 @@ public final class Prefs {
     public int thumbnailSeconds() { return sp.getInt("thumb_seconds", 4); }
     public void setThumbnailSeconds(int s) { sp.edit().putInt("thumb_seconds", s).apply(); }
 
+    // ---- floating ball
+    public boolean floatingBall() { return sp.getBoolean("floating_ball", true); }
+    public void setFloatingBall(boolean b) { sp.edit().putBoolean("floating_ball", b).apply(); }
+
     // ---- http server
     public boolean serverEnabled() { return sp.getBoolean("server_enabled", true); }
     public void setServerEnabled(boolean b) { sp.edit().putBoolean("server_enabled", b).apply(); }

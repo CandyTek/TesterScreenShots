@@ -105,6 +105,8 @@
     <string name="set_thumb_show">Show thumbnail after a capture</string>
     <string name="set_thumb_seconds">Hide after (s)</string>
     <string name="set_overlay_perm">Overlay permission</string>
+    <string name="set_ball">Show floating screenshot ball</string>
+    <string name="set_ball_hint">Tap to capture immediately. Long-press and drag to move; drop it near the left/right edge to dock it half-hidden, or anywhere else to keep it fully visible. It never appears in screenshots.</string>
     <string name="set_server">LAN server</string>
     <string name="set_server_enable">Enable LAN server (shows the QR code)</string>
     <string name="set_server_port">Port</string>

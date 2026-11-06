@@ -14,7 +14,12 @@ AGP 8.7.3 / Gradle 8.9, with the same mirrors as ApkToolHua. `gradle.properties`
 
 ## How a capture works (`capture/CaptureEngine`)
 
-1. **Trigger:** a notification button, the Quick Settings tile, or the timer button in the app.
+1. **Trigger:** a notification button, the Quick Settings tile, the floating ball (`ui/FloatingBall`), or the timer button in the app. The floating ball needs the overlay permission and can be turned off in Settings:
+   - tap: capture now
+   - long-press, then drag: move it
+   - drop near the left/right edge: docks half-hidden
+   - drop anywhere else: stays fully visible there
+   - hidden during every capture; position is remembered
 2. **Choose a method.** In *Automatic* mode:
    - **root** (`su -c screencap`)
    - **network ADB:** the port is read through `SystemProperties` reflection (`service.adb.tcp.port`, falling back to 5555). The app connects to its own `adbd` on 127.0.0.1 with the ADB wire protocol and RSA auth (`capture/adb/`) and runs `exec:screencap`.
@@ -64,3 +69,7 @@ Verified on rk3566 boards running Android 11 and 13 via network ADB:
 - the accessibility and screen-recording methods
 - the navigation-bar crop option
 - Android 5–10 devices
+
+|                                 |                                 |
+|---------------------------------|---------------------------------|
+| ![1](doc/ss20261106022544.webp) | ![1](doc/ss20261106022820.webp) |

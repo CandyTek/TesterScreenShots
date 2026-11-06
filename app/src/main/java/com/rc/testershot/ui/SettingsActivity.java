@@ -60,6 +60,7 @@ public class SettingsActivity extends Activity implements CaptureEngine.Listener
         b.swThumb.setChecked(p.showThumbnail());
         b.swServer.setChecked(p.serverEnabled());
         b.swServerZip.setChecked(p.serverZip());
+        b.swBall.setChecked(p.floatingBall());
         b.etAdbPort.setText(p.adbPort() > 0 ? String.valueOf(p.adbPort()) : "");
         b.etCollapseWait.setText(String.valueOf(p.collapseWaitMs()));
         b.etLogLines.setText(String.valueOf(p.logcatLines()));
@@ -100,6 +101,10 @@ public class SettingsActivity extends Activity implements CaptureEngine.Listener
         b.swLogcat.setOnCheckedChangeListener((v, c) -> p.setSaveLogcat(c));
         b.swThumb.setOnCheckedChangeListener((v, c) -> p.setShowThumbnail(c));
         b.swServerZip.setOnCheckedChangeListener((v, c) -> p.setServerZip(c));
+        b.swBall.setOnCheckedChangeListener((v, c) -> {
+            p.setFloatingBall(c);
+            ShotService.start(this, ShotService.ACTION_REFRESH);
+        });
         b.swServer.setOnCheckedChangeListener((v, c) -> {
             p.setServerEnabled(c);
             ShotService.start(this, ShotService.ACTION_SERVER);

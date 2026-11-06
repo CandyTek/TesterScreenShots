@@ -16,6 +16,7 @@ import com.rc.testershot.Prefs;
 import com.rc.testershot.R;
 import com.rc.testershot.capture.adb.AdbConnection;
 import com.rc.testershot.capture.adb.AdbKey;
+import com.rc.testershot.ui.FloatingBall;
 import com.rc.testershot.ui.ThumbnailOverlay;
 
 import java.io.File;
@@ -62,6 +63,7 @@ public final class CaptureEngine {
     private final ProjectionCapturer projection;
     private final ShotSaver saver;
     private final ThumbnailOverlay overlay;
+    private final FloatingBall ball;
 
     /** null = not probed yet. */
     private volatile Boolean rootOk;
@@ -76,7 +78,11 @@ public final class CaptureEngine {
         this.projection = new ProjectionCapturer(app);
         this.saver = new ShotSaver(app);
         this.overlay = new ThumbnailOverlay(app);
+        this.ball = new FloatingBall(app, () -> trigger(0));
     }
+
+    /** The floating screenshot button (shown/hidden by ShotService). */
+    public FloatingBall floatingBall() { return ball; }
 
     // ------------------------------------------------------------------ listeners
 
@@ -242,6 +248,7 @@ public final class CaptureEngine {
         }
         // Hide our own thumbnail first so it never ends up in the next screenshot.
         main.post(overlay::hideNow);
+        main.post(ball::hideForCapture);
         captureExec.execute(() -> {
             try {
                 runCapture(delaySeconds);
@@ -249,6 +256,7 @@ public final class CaptureEngine {
                 lastError = t.toString();
                 Log.e(TAG, "capture failed", t);
             } finally {
+                main.post(ball::restoreAfterCapture);
                 busy.set(false);
             }
         });
@@ -267,7 +275,9 @@ public final class CaptureEngine {
 
         collapseShade(shell);
         long wait = prefs.collapseWaitMs() + delaySeconds * 1000L - (SystemClock.uptimeMillis() - t0);
-        if (wait > 0) Thread.sleep(wait);
+        // At least a couple of frames so the hidden floating ball / thumbnail are really off screen.
+        if (wait < 80) wait = 80;
+        Thread.sleep(wait);
 
         Rect crop = prefs.cropNavBar() ? NavBarProbe.contentRect(app, 600) : null;
 
